@@ -18,7 +18,6 @@ This research compares different forecasting approaches for mental health sympto
 ├── llm_output/                      # LLM training and results
 │   ├── train_llm_rag_with_dtw.py   # Main LLM+RAG training script
 │   └── [condition]/[model]/         # Results by condition and model
-├── publication_ready_tables_and_figures/  # Publication outputs
 ├── compute_embeddings.py            # Precompute embeddings for RAG
 ├── prepare_rag_database.py          # Create RAG database from training data
 ├── generate_per_day_summaries.py   # Generate per-horizon performance summaries
