@@ -139,7 +139,7 @@ If you use this code or methodology in your research, please cite:
 
 ## License
 
-[Choose an appropriate license - MIT, Apache 2.0, etc.]
+MIT License
 
 ## Contributing
 
@@ -147,7 +147,7 @@ Contributions are welcome! Please open an issue or submit a pull request.
 
 ## Contact
 
-For questions or collaboration inquiries, please contact: [your email]
+For questions or collaboration inquiries, please contact: wilsonhyeh@gmail.com
 
 ## Acknowledgments
 
