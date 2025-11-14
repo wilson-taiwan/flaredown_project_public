@@ -1,0 +1,57 @@
+================================================================================
+MULTI-VARIATE DTW-BASED RAG DEPRESSION FORECASTING SUMMARY
+================================================================================
+
+Timestamp: 2025-10-30 01:13:56
+Model: openai/gpt-oss-20b
+Method: Multi-variate DTW-based RAG (DTW retrieval + LLM augmentation + generation)
+
+INPUTS:
+  Text DB path: /Users/wilsonyeh/flaredown_project/llm_dataset/depression/rag_depression_forecast_text_database.json
+  Test data path: /Users/wilsonyeh/flaredown_project/llm_dataset/depression/llm_depression_test.csv
+  Text DB directory: /Users/wilsonyeh/flaredown_project/llm_dataset/depression
+  Test data directory: /Users/wilsonyeh/flaredown_project/llm_dataset/depression
+
+RUN PARAMETERS:
+  Condition: depression
+  Model: openai/gpt-oss-20b
+  top_k: 25
+  max_patients: 1500
+  n_workers: 16
+  text_db: /Users/wilsonyeh/flaredown_project/llm_dataset/depression/rag_depression_forecast_text_database.json
+  test_data: /Users/wilsonyeh/flaredown_project/llm_dataset/depression/llm_depression_test.csv
+  run_name: dtw-only-103025-0113
+  adaptive_weights: {'depression': 0.38079794078399176, 'anxiety': 0.2350969566477486, 'fatigue': 0.1527689422865641, 'pain': 0.030526575415324685, 'sadness': 0.040260511345321215, 'stress': 0.07426878566335154, 'irritability': 0.04700026064949075, 'cognitive_dysfunction': 0.03928002720820746}
+  Requested testing windows (max_patients): 1500
+  Results directory: /Users/wilsonyeh/flaredown_project/llm_output/depression/dtw-only-103025-0113
+
+EVALUATION METRICS:
+  Number of prediction windows saved: 1500
+  Unique patients tested: 1500
+  MSE:  0.813006
+  RMSE: 0.901668
+  MAE:  0.679275
+  R²:   0.481189
+
+PER-DAY METRICS:
+  Day 11: MAE=0.616990, RMSE=0.854742
+  Day 12: MAE=0.649411, RMSE=0.863041
+  Day 13: MAE=0.679989, RMSE=0.914180
+  Day 14: MAE=0.689744, RMSE=0.911576
+  Day 15: MAE=0.696462, RMSE=0.912242
+  Day 16: MAE=0.680512, RMSE=0.887533
+  Day 17: MAE=0.705644, RMSE=0.923487
+  Day 18: MAE=0.670205, RMSE=0.883636
+  Day 19: MAE=0.692692, RMSE=0.921292
+  Day 20: MAE=0.711100, RMSE=0.941074
+
+FILES WRITTEN:
+  - /Users/wilsonyeh/flaredown_project/llm_output/depression/dtw-only-103025-0113/predictions.csv
+  - /Users/wilsonyeh/flaredown_project/llm_output/depression/dtw-only-103025-0113/evaluation_metrics.json
+  - /Users/wilsonyeh/flaredown_project/llm_output/depression/dtw-only-103025-0113/training_summary.txt
+  - /Users/wilsonyeh/flaredown_project/llm_output/depression/dtw-only-103025-0113/figures (visualizations directory)
+
+NOTES:
+  - Retrieval used multi-variate DTW with primary symptom weighted 50% and comorbidities 50%.
+  - LLM calls were made to the configured OpenRouter model with temperature=0 and retry/backoff.
+  - Any patients that failed the full pipeline were excluded from the saved predictions; check logs for retry details.

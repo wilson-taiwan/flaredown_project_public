@@ -1,0 +1,70 @@
+================================================================================
+MULTI-VARIATE DTW-BASED RAG DEPRESSION FORECASTING SUMMARY
+================================================================================
+
+Timestamp: 2025-10-30 23:36:33
+Model: microsoft/phi-4-reasoning-plus
+Method: Multi-variate DTW-based RAG (DTW retrieval + LLM augmentation + generation)
+
+INPUTS:
+  Text DB path: /Users/wilsonyeh/flaredown_project/llm_dataset/depression/rag_depression_forecast_text_database.json
+  Test data path: /Users/wilsonyeh/flaredown_project/llm_dataset/depression/llm_depression_test.csv
+  Text DB directory: /Users/wilsonyeh/flaredown_project/llm_dataset/depression
+  Test data directory: /Users/wilsonyeh/flaredown_project/llm_dataset/depression
+
+RUN PARAMETERS:
+  Condition: depression
+  Model: microsoft/phi-4-reasoning-plus
+  top_k: 50
+  max_patients: 1500
+  n_workers: 16
+  text_db: /Users/wilsonyeh/flaredown_project/llm_dataset/depression/rag_depression_forecast_text_database.json
+  test_data: /Users/wilsonyeh/flaredown_project/llm_dataset/depression/llm_depression_test.csv
+  run_name: microsoft-phi-4-reasoning-plus-103025-2311
+  run_start_timestamp: 2025-10-30 23:11:53
+  run_end_timestamp: 2025-10-30 23:36:33
+  run_duration_seconds: 1480.206510066986
+  use_embedding_rag: False
+  embedded_db_count: 0
+  precomputed_query_embedding_count: 1500
+  adaptive_weights: {'depression': 0.38079794078399176, 'anxiety': 0.2350969566477486, 'fatigue': 0.1527689422865641, 'pain': 0.030526575415324685, 'sadness': 0.040260511345321215, 'stress': 0.07426878566335154, 'irritability': 0.04700026064949075, 'cognitive_dysfunction': 0.03928002720820746}
+  api_call_count: 1503
+  api_examples_collected: 9
+  python_executable: /Users/wilsonyeh/flaredown_project/.venv/bin/python
+  python_version: 3.12.0 (v3.12.0:0fb18b02c8, Oct  2 2023, 09:45:56) [Clang 13.0.0 (clang-1300.0.29.30)]
+  platform: macOS-26.1-arm64-arm-64bit
+  git_run_name: microsoft-phi-4-reasoning-plus-103025-2311
+  package_versions: {'pandas': '2.3.3', 'numpy': '2.3.4', 'sklearn': '1.7.2', 'fastdtw': '0.3.4', 'scipy': '1.16.3', 'requests': '2.32.5', 'matplotlib': '3.10.7', 'seaborn': '0.13.2'}
+  Requested testing windows (max_patients): 1500
+  Results directory: /Users/wilsonyeh/flaredown_project/llm_output/depression/microsoft-phi-4-reasoning-plus-103025-2311
+
+EVALUATION METRICS:
+  Number of prediction windows saved: 1500
+  Unique patients tested: 1500
+  MSE:  0.930317
+  RMSE: 0.964529
+  MAE:  0.695460
+  R²:   0.406328
+
+PER-DAY METRICS:
+  Day 11: MAE=0.583800, RMSE=0.908812
+  Day 12: MAE=0.623667, RMSE=0.897385
+  Day 13: MAE=0.694867, RMSE=0.969533
+  Day 14: MAE=0.702800, RMSE=0.969873
+  Day 15: MAE=0.725600, RMSE=0.972303
+  Day 16: MAE=0.697133, RMSE=0.947555
+  Day 17: MAE=0.720933, RMSE=0.984222
+  Day 18: MAE=0.702333, RMSE=0.954027
+  Day 19: MAE=0.737933, RMSE=1.001143
+  Day 20: MAE=0.765533, RMSE=1.032909
+
+FILES WRITTEN:
+  - /Users/wilsonyeh/flaredown_project/llm_output/depression/microsoft-phi-4-reasoning-plus-103025-2311/predictions.csv
+  - /Users/wilsonyeh/flaredown_project/llm_output/depression/microsoft-phi-4-reasoning-plus-103025-2311/evaluation_metrics.json
+  - /Users/wilsonyeh/flaredown_project/llm_output/depression/microsoft-phi-4-reasoning-plus-103025-2311/training_summary.txt
+  - /Users/wilsonyeh/flaredown_project/llm_output/depression/microsoft-phi-4-reasoning-plus-103025-2311/figures (visualizations directory)
+
+NOTES:
+  - Retrieval used multi-variate DTW with primary symptom weighted 50% and comorbidities 50%.
+  - LLM calls were made to the configured OpenRouter model with temperature=0 and retry/backoff.
+  - Any patients that failed the full pipeline were excluded from the saved predictions; check logs for retry details.

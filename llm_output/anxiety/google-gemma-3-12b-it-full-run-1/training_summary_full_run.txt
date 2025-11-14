@@ -1,0 +1,70 @@
+================================================================================
+MULTI-VARIATE DTW-BASED RAG ANXIETY FORECASTING SUMMARY
+================================================================================
+
+Timestamp: 2025-11-01 17:57:37
+Model: google/gemma-3-12b-it
+Method: Multi-variate DTW-based RAG (DTW retrieval + LLM augmentation + generation)
+
+INPUTS:
+  Text DB path: /Users/wilsonyeh/flaredown_project/llm_dataset/anxiety/rag_anxiety_forecast_text_database.json
+  Test data path: /Users/wilsonyeh/flaredown_project/llm_dataset/anxiety/llm_anxiety_test.csv
+  Text DB directory: /Users/wilsonyeh/flaredown_project/llm_dataset/anxiety
+  Test data directory: /Users/wilsonyeh/flaredown_project/llm_dataset/anxiety
+
+RUN PARAMETERS:
+  Condition: anxiety
+  Model: google/gemma-3-12b-it
+  top_k: 50
+  max_patients: 1500
+  n_workers: 16
+  text_db: /Users/wilsonyeh/flaredown_project/llm_dataset/anxiety/rag_anxiety_forecast_text_database.json
+  test_data: /Users/wilsonyeh/flaredown_project/llm_dataset/anxiety/llm_anxiety_test.csv
+  run_name: google-gemma-3-12b-it-110125-1735
+  run_start_timestamp: 2025-11-01 17:35:09
+  run_end_timestamp: 2025-11-01 17:57:37
+  run_duration_seconds: 1348.348567724228
+  use_embedding_rag: False
+  embedded_db_count: 0
+  precomputed_query_embedding_count: 1500
+  adaptive_weights: {'depression': 0.35, 'anxiety': 0.2813808252631955, 'fatigue': 0.1333354670657027, 'pain': 0.04628709903496541, 'sadness': 0.02413411401434053, 'stress': 0.06367561783129898, 'irritability': 0.04371518954519621, 'cognitive_dysfunction': 0.05747168724530065}
+  api_call_count: 1502
+  api_examples_collected: 9
+  python_executable: /Users/wilsonyeh/flaredown_project/.venv/bin/python
+  python_version: 3.12.0 (v3.12.0:0fb18b02c8, Oct  2 2023, 09:45:56) [Clang 13.0.0 (clang-1300.0.29.30)]
+  platform: macOS-26.1-arm64-arm-64bit
+  git_run_name: google-gemma-3-12b-it-110125-1735
+  package_versions: {'pandas': '2.3.3', 'numpy': '2.3.4', 'sklearn': '1.7.2', 'fastdtw': '0.3.4', 'scipy': '1.16.3', 'requests': '2.32.5', 'matplotlib': '3.10.7', 'seaborn': '0.13.2'}
+  Requested testing windows (max_patients): 1500
+  Results directory: /Users/wilsonyeh/flaredown_project/llm_output/anxiety/google-gemma-3-12b-it-110125-1735
+
+EVALUATION METRICS:
+  Number of prediction windows saved: 1500
+  Unique patients tested: 1500
+  MSE:  0.830717
+  RMSE: 0.911437
+  MAE:  0.683380
+  R²:   0.313249
+
+PER-DAY METRICS:
+  Day 11: MAE=0.609600, RMSE=0.880735
+  Day 12: MAE=0.642467, RMSE=0.889693
+  Day 13: MAE=0.649200, RMSE=0.873193
+  Day 14: MAE=0.661733, RMSE=0.894867
+  Day 15: MAE=0.693800, RMSE=0.909707
+  Day 16: MAE=0.675333, RMSE=0.879841
+  Day 17: MAE=0.718467, RMSE=0.936308
+  Day 18: MAE=0.705400, RMSE=0.917711
+  Day 19: MAE=0.732867, RMSE=0.948546
+  Day 20: MAE=0.744933, RMSE=0.977943
+
+FILES WRITTEN:
+  - /Users/wilsonyeh/flaredown_project/llm_output/anxiety/google-gemma-3-12b-it-110125-1735/predictions.csv
+  - /Users/wilsonyeh/flaredown_project/llm_output/anxiety/google-gemma-3-12b-it-110125-1735/evaluation_metrics.json
+  - /Users/wilsonyeh/flaredown_project/llm_output/anxiety/google-gemma-3-12b-it-110125-1735/training_summary.txt
+  - /Users/wilsonyeh/flaredown_project/llm_output/anxiety/google-gemma-3-12b-it-110125-1735/figures (visualizations directory)
+
+NOTES:
+  - Retrieval used multi-variate DTW with primary symptom weighted 50% and comorbidities 50%.
+  - LLM calls were made to the configured OpenRouter model with temperature=0 and retry/backoff.
+  - Any patients that failed the full pipeline were excluded from the saved predictions; check logs for retry details.

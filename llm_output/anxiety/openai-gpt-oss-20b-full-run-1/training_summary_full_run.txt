@@ -1,0 +1,70 @@
+================================================================================
+MULTI-VARIATE DTW-BASED RAG ANXIETY FORECASTING SUMMARY
+================================================================================
+
+Timestamp: 2025-10-29 21:01:30
+Model: openai/gpt-oss-20b
+Method: Multi-variate DTW-based RAG (DTW retrieval + LLM augmentation + generation)
+
+INPUTS:
+  Text DB path: /Users/wilsonyeh/flaredown_project/llm_dataset/anxiety/rag_anxiety_forecast_text_database.json
+  Test data path: /Users/wilsonyeh/flaredown_project/llm_dataset/anxiety/llm_anxiety_test.csv
+  Text DB directory: /Users/wilsonyeh/flaredown_project/llm_dataset/anxiety
+  Test data directory: /Users/wilsonyeh/flaredown_project/llm_dataset/anxiety
+
+RUN PARAMETERS:
+  Condition: anxiety
+  Model: openai/gpt-oss-20b
+  top_k: 50
+  max_patients: 1500
+  n_workers: 16
+  text_db: /Users/wilsonyeh/flaredown_project/llm_dataset/anxiety/rag_anxiety_forecast_text_database.json
+  test_data: /Users/wilsonyeh/flaredown_project/llm_dataset/anxiety/llm_anxiety_test.csv
+  run_name: openai-gpt-oss-20b-102925-2027
+  run_start_timestamp: 2025-10-29 20:27:44
+  run_end_timestamp: 2025-10-29 21:01:30
+  run_duration_seconds: 2025.7751388549805
+  use_embedding_rag: False
+  embedded_db_count: 0
+  precomputed_query_embedding_count: 1500
+  adaptive_weights: {'depression': 0.35, 'anxiety': 0.2813808252631955, 'fatigue': 0.1333354670657027, 'pain': 0.04628709903496541, 'sadness': 0.02413411401434053, 'stress': 0.06367561783129898, 'irritability': 0.04371518954519621, 'cognitive_dysfunction': 0.05747168724530065}
+  api_call_count: 1562
+  api_examples_collected: 9
+  python_executable: /Users/wilsonyeh/flaredown_project/.venv/bin/python
+  python_version: 3.12.0 (v3.12.0:0fb18b02c8, Oct  2 2023, 09:45:56) [Clang 13.0.0 (clang-1300.0.29.30)]
+  platform: macOS-26.1-arm64-arm-64bit
+  git_run_name: openai-gpt-oss-20b-102925-2027
+  package_versions: {'pandas': '2.3.3', 'numpy': '2.3.4', 'sklearn': '1.7.2', 'fastdtw': '0.3.4', 'scipy': '1.16.3', 'requests': '2.32.5', 'matplotlib': '3.10.7', 'seaborn': '0.13.2'}
+  Requested testing windows (max_patients): 1500
+  Results directory: /Users/wilsonyeh/flaredown_project/llm_output/anxiety/openai-gpt-oss-20b-102925-2027
+
+EVALUATION METRICS:
+  Number of prediction windows saved: 1498
+  Unique patients tested: 1498
+  MSE:  0.813224
+  RMSE: 0.901789
+  MAE:  0.693037
+  R²:   0.328193
+
+PER-DAY METRICS:
+  Day 11: MAE=0.642023, RMSE=0.877579
+  Day 12: MAE=0.689312, RMSE=0.912009
+  Day 13: MAE=0.696429, RMSE=0.904411
+  Day 14: MAE=0.694927, RMSE=0.908347
+  Day 15: MAE=0.685501, RMSE=0.891141
+  Day 16: MAE=0.662290, RMSE=0.842268
+  Day 17: MAE=0.702991, RMSE=0.904504
+  Day 18: MAE=0.696348, RMSE=0.894751
+  Day 19: MAE=0.728184, RMSE=0.932680
+  Day 20: MAE=0.732363, RMSE=0.946114
+
+FILES WRITTEN:
+  - /Users/wilsonyeh/flaredown_project/llm_output/anxiety/openai-gpt-oss-20b-102925-2027/predictions.csv
+  - /Users/wilsonyeh/flaredown_project/llm_output/anxiety/openai-gpt-oss-20b-102925-2027/evaluation_metrics.json
+  - /Users/wilsonyeh/flaredown_project/llm_output/anxiety/openai-gpt-oss-20b-102925-2027/training_summary.txt
+  - /Users/wilsonyeh/flaredown_project/llm_output/anxiety/openai-gpt-oss-20b-102925-2027/figures (visualizations directory)
+
+NOTES:
+  - Retrieval used multi-variate DTW with primary symptom weighted 50% and comorbidities 50%.
+  - LLM calls were made to the configured OpenRouter model with temperature=0 and retry/backoff.
+  - Any patients that failed the full pipeline were excluded from the saved predictions; check logs for retry details.

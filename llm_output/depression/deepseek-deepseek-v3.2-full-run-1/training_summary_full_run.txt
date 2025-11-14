@@ -1,0 +1,70 @@
+================================================================================
+MULTI-VARIATE DTW-BASED RAG DEPRESSION FORECASTING SUMMARY
+================================================================================
+
+Timestamp: 2025-10-30 13:17:13
+Model: deepseek/deepseek-v3.2-exp
+Method: Multi-variate DTW-based RAG (DTW retrieval + LLM augmentation + generation)
+
+INPUTS:
+  Text DB path: /Users/wilsonyeh/flaredown_project/llm_dataset/depression/rag_depression_forecast_text_database.json
+  Test data path: /Users/wilsonyeh/flaredown_project/llm_dataset/depression/llm_depression_test.csv
+  Text DB directory: /Users/wilsonyeh/flaredown_project/llm_dataset/depression
+  Test data directory: /Users/wilsonyeh/flaredown_project/llm_dataset/depression
+
+RUN PARAMETERS:
+  Condition: depression
+  Model: deepseek/deepseek-v3.2-exp
+  top_k: 50
+  max_patients: 1500
+  n_workers: 16
+  text_db: /Users/wilsonyeh/flaredown_project/llm_dataset/depression/rag_depression_forecast_text_database.json
+  test_data: /Users/wilsonyeh/flaredown_project/llm_dataset/depression/llm_depression_test.csv
+  run_name: deepseek-deepseek-v3.2-exp-103025-1247
+  run_start_timestamp: 2025-10-30 12:47:22
+  run_end_timestamp: 2025-10-30 13:17:12
+  run_duration_seconds: 1790.409840106964
+  use_embedding_rag: False
+  embedded_db_count: 0
+  precomputed_query_embedding_count: 1500
+  adaptive_weights: {'depression': 0.38079794078399176, 'anxiety': 0.2350969566477486, 'fatigue': 0.1527689422865641, 'pain': 0.030526575415324685, 'sadness': 0.040260511345321215, 'stress': 0.07426878566335154, 'irritability': 0.04700026064949075, 'cognitive_dysfunction': 0.03928002720820746}
+  api_call_count: 1504
+  api_examples_collected: 9
+  python_executable: /Users/wilsonyeh/flaredown_project/.venv/bin/python
+  python_version: 3.12.0 (v3.12.0:0fb18b02c8, Oct  2 2023, 09:45:56) [Clang 13.0.0 (clang-1300.0.29.30)]
+  platform: macOS-26.1-arm64-arm-64bit
+  git_run_name: deepseek-deepseek-v3.2-exp-103025-1247
+  package_versions: {'pandas': '2.3.3', 'numpy': '2.3.4', 'sklearn': '1.7.2', 'fastdtw': '0.3.4', 'scipy': '1.16.3', 'requests': '2.32.5', 'matplotlib': '3.10.7', 'seaborn': '0.13.2'}
+  Requested testing windows (max_patients): 1500
+  Results directory: /Users/wilsonyeh/flaredown_project/llm_output/depression/deepseek-deepseek-v3.2-exp-103025-1247
+
+EVALUATION METRICS:
+  Number of prediction windows saved: 1500
+  Unique patients tested: 1500
+  MSE:  1.001869
+  RMSE: 1.000934
+  MAE:  0.676400
+  R²:   0.360667
+
+PER-DAY METRICS:
+  Day 11: MAE=0.564867, RMSE=0.932055
+  Day 12: MAE=0.607933, RMSE=0.933870
+  Day 13: MAE=0.681800, RMSE=1.006933
+  Day 14: MAE=0.692733, RMSE=1.011102
+  Day 15: MAE=0.713933, RMSE=1.031662
+  Day 16: MAE=0.674333, RMSE=0.989421
+  Day 17: MAE=0.715933, RMSE=1.023950
+  Day 18: MAE=0.672733, RMSE=0.985302
+  Day 19: MAE=0.707533, RMSE=1.037397
+  Day 20: MAE=0.732200, RMSE=1.050165
+
+FILES WRITTEN:
+  - /Users/wilsonyeh/flaredown_project/llm_output/depression/deepseek-deepseek-v3.2-exp-103025-1247/predictions.csv
+  - /Users/wilsonyeh/flaredown_project/llm_output/depression/deepseek-deepseek-v3.2-exp-103025-1247/evaluation_metrics.json
+  - /Users/wilsonyeh/flaredown_project/llm_output/depression/deepseek-deepseek-v3.2-exp-103025-1247/training_summary.txt
+  - /Users/wilsonyeh/flaredown_project/llm_output/depression/deepseek-deepseek-v3.2-exp-103025-1247/figures (visualizations directory)
+
+NOTES:
+  - Retrieval used multi-variate DTW with primary symptom weighted 50% and comorbidities 50%.
+  - LLM calls were made to the configured OpenRouter model with temperature=0 and retry/backoff.
+  - Any patients that failed the full pipeline were excluded from the saved predictions; check logs for retry details.

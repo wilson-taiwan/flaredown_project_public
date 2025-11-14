@@ -1,0 +1,70 @@
+================================================================================
+MULTI-VARIATE DTW-BASED RAG ANXIETY FORECASTING SUMMARY
+================================================================================
+
+Timestamp: 2025-11-01 01:17:30
+Model: microsoft/phi-4
+Method: Multi-variate DTW-based RAG (DTW retrieval + LLM augmentation + generation)
+
+INPUTS:
+  Text DB path: /Users/wilsonyeh/flaredown_project/llm_dataset/anxiety/rag_anxiety_forecast_text_database.json
+  Test data path: /Users/wilsonyeh/flaredown_project/llm_dataset/anxiety/llm_anxiety_test.csv
+  Text DB directory: /Users/wilsonyeh/flaredown_project/llm_dataset/anxiety
+  Test data directory: /Users/wilsonyeh/flaredown_project/llm_dataset/anxiety
+
+RUN PARAMETERS:
+  Condition: anxiety
+  Model: microsoft/phi-4
+  top_k: 50
+  max_patients: 1500
+  n_workers: 16
+  text_db: /Users/wilsonyeh/flaredown_project/llm_dataset/anxiety/rag_anxiety_forecast_text_database.json
+  test_data: /Users/wilsonyeh/flaredown_project/llm_dataset/anxiety/llm_anxiety_test.csv
+  run_name: microsoft-phi-4-110125-0020
+  run_start_timestamp: 2025-11-01 00:20:18
+  run_end_timestamp: 2025-11-01 01:17:29
+  run_duration_seconds: 3430.974535226822
+  use_embedding_rag: False
+  embedded_db_count: 0
+  precomputed_query_embedding_count: 1500
+  adaptive_weights: {'depression': 0.35, 'anxiety': 0.2813808252631955, 'fatigue': 0.1333354670657027, 'pain': 0.04628709903496541, 'sadness': 0.02413411401434053, 'stress': 0.06367561783129898, 'irritability': 0.04371518954519621, 'cognitive_dysfunction': 0.05747168724530065}
+  api_call_count: 1572
+  api_examples_collected: 9
+  python_executable: /Users/wilsonyeh/flaredown_project/.venv/bin/python
+  python_version: 3.12.0 (v3.12.0:0fb18b02c8, Oct  2 2023, 09:45:56) [Clang 13.0.0 (clang-1300.0.29.30)]
+  platform: macOS-26.1-arm64-arm-64bit
+  git_run_name: microsoft-phi-4-110125-0020
+  package_versions: {'pandas': '2.3.3', 'numpy': '2.3.4', 'sklearn': '1.7.2', 'fastdtw': '0.3.4', 'scipy': '1.16.3', 'requests': '2.32.5', 'matplotlib': '3.10.7', 'seaborn': '0.13.2'}
+  Requested testing windows (max_patients): 1500
+  Results directory: /Users/wilsonyeh/flaredown_project/llm_output/anxiety/microsoft-phi-4-110125-0020
+
+EVALUATION METRICS:
+  Number of prediction windows saved: 1497
+  Unique patients tested: 1497
+  MSE:  0.845494
+  RMSE: 0.919508
+  MAE:  0.684345
+  R²:   0.301556
+
+PER-DAY METRICS:
+  Day 11: MAE=0.632659, RMSE=0.888493
+  Day 12: MAE=0.670033, RMSE=0.917240
+  Day 13: MAE=0.678136, RMSE=0.923922
+  Day 14: MAE=0.693246, RMSE=0.937017
+  Day 15: MAE=0.688978, RMSE=0.929820
+  Day 16: MAE=0.662485, RMSE=0.890340
+  Day 17: MAE=0.698838, RMSE=0.931626
+  Day 18: MAE=0.695758, RMSE=0.918331
+  Day 19: MAE=0.691329, RMSE=0.912039
+  Day 20: MAE=0.731984, RMSE=0.944574
+
+FILES WRITTEN:
+  - /Users/wilsonyeh/flaredown_project/llm_output/anxiety/microsoft-phi-4-110125-0020/predictions.csv
+  - /Users/wilsonyeh/flaredown_project/llm_output/anxiety/microsoft-phi-4-110125-0020/evaluation_metrics.json
+  - /Users/wilsonyeh/flaredown_project/llm_output/anxiety/microsoft-phi-4-110125-0020/training_summary.txt
+  - /Users/wilsonyeh/flaredown_project/llm_output/anxiety/microsoft-phi-4-110125-0020/figures (visualizations directory)
+
+NOTES:
+  - Retrieval used multi-variate DTW with primary symptom weighted 50% and comorbidities 50%.
+  - LLM calls were made to the configured OpenRouter model with temperature=0 and retry/backoff.
+  - Any patients that failed the full pipeline were excluded from the saved predictions; check logs for retry details.

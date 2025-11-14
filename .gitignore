@@ -1,0 +1,55 @@
+# Large data files and reports
+cleaned_data/
+reports/
+raw_data/
+
+# Archive folder and publication outputs
+archive-do-not-use/
+publication_ready_tables_and_figures/
+
+# API keys and sensitive config
+config.py
+llm_output/config.py
+
+# RAG databases (too large for GitHub)
+rag_depression_forecast_database.json
+rag_depression_forecast_text_database.json
+rag_depression_forecast_embedded.json
+rag_depression_forecast_embedded_partial.json
+rag_anxiety_forecast_database.json
+rag_anxiety_forecast_text_database.json
+rag_anxiety_forecast_embedded.json
+rag_anxiety_forecast_embedded_partial.json
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+ENV/
+.venv/
+
+# Jupyter Notebook
+.ipynb_checkpoints
+
+# IDEs
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Large CSV data files (ignore all CSVs to avoid committing large datasets)
+*.csv
+
+# Ignore JSON files generated for llm datasets
+# Ignore any .json anywhere under llm_dataset/ (recursive)
+llm_dataset/**/*.json
+

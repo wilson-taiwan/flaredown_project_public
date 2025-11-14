@@ -1,0 +1,70 @@
+================================================================================
+MULTI-VARIATE DTW-BASED RAG ANXIETY FORECASTING SUMMARY
+================================================================================
+
+Timestamp: 2025-10-29 22:53:03
+Model: meta-llama/llama-3.3-70b-instruct
+Method: Multi-variate DTW-based RAG (DTW retrieval + LLM augmentation + generation)
+
+INPUTS:
+  Text DB path: /Users/wilsonyeh/flaredown_project/llm_dataset/anxiety/rag_anxiety_forecast_text_database.json
+  Test data path: /Users/wilsonyeh/flaredown_project/llm_dataset/anxiety/llm_anxiety_test.csv
+  Text DB directory: /Users/wilsonyeh/flaredown_project/llm_dataset/anxiety
+  Test data directory: /Users/wilsonyeh/flaredown_project/llm_dataset/anxiety
+
+RUN PARAMETERS:
+  Condition: anxiety
+  Model: meta-llama/llama-3.3-70b-instruct
+  top_k: 50
+  max_patients: 1500
+  n_workers: 16
+  text_db: /Users/wilsonyeh/flaredown_project/llm_dataset/anxiety/rag_anxiety_forecast_text_database.json
+  test_data: /Users/wilsonyeh/flaredown_project/llm_dataset/anxiety/llm_anxiety_test.csv
+  run_name: meta-llama-llama-3.3-70b-instruct-102925-2225
+  run_start_timestamp: 2025-10-29 22:25:51
+  run_end_timestamp: 2025-10-29 22:53:03
+  run_duration_seconds: 1632.4954450130463
+  use_embedding_rag: False
+  embedded_db_count: 0
+  precomputed_query_embedding_count: 1500
+  adaptive_weights: {'depression': 0.35, 'anxiety': 0.2813808252631955, 'fatigue': 0.1333354670657027, 'pain': 0.04628709903496541, 'sadness': 0.02413411401434053, 'stress': 0.06367561783129898, 'irritability': 0.04371518954519621, 'cognitive_dysfunction': 0.05747168724530065}
+  api_call_count: 1506
+  api_examples_collected: 9
+  python_executable: /Users/wilsonyeh/flaredown_project/.venv/bin/python
+  python_version: 3.12.0 (v3.12.0:0fb18b02c8, Oct  2 2023, 09:45:56) [Clang 13.0.0 (clang-1300.0.29.30)]
+  platform: macOS-26.1-arm64-arm-64bit
+  git_run_name: meta-llama-llama-3.3-70b-instruct-102925-2225
+  package_versions: {'pandas': '2.3.3', 'numpy': '2.3.4', 'sklearn': '1.7.2', 'fastdtw': '0.3.4', 'scipy': '1.16.3', 'requests': '2.32.5', 'matplotlib': '3.10.7', 'seaborn': '0.13.2'}
+  Requested testing windows (max_patients): 1500
+  Results directory: /Users/wilsonyeh/flaredown_project/llm_output/anxiety/meta-llama-llama-3.3-70b-instruct-102925-2225
+
+EVALUATION METRICS:
+  Number of prediction windows saved: 1500
+  Unique patients tested: 1500
+  MSE:  0.824097
+  RMSE: 0.907798
+  MAE:  0.704168
+  R²:   0.318721
+
+PER-DAY METRICS:
+  Day 11: MAE=0.620867, RMSE=0.886187
+  Day 12: MAE=0.687467, RMSE=0.904986
+  Day 13: MAE=0.689093, RMSE=0.892522
+  Day 14: MAE=0.704240, RMSE=0.904321
+  Day 15: MAE=0.731720, RMSE=0.926758
+  Day 16: MAE=0.709440, RMSE=0.902267
+  Day 17: MAE=0.746547, RMSE=0.945421
+  Day 18: MAE=0.721453, RMSE=0.907579
+  Day 19: MAE=0.720640, RMSE=0.904238
+  Day 20: MAE=0.710213, RMSE=0.902287
+
+FILES WRITTEN:
+  - /Users/wilsonyeh/flaredown_project/llm_output/anxiety/meta-llama-llama-3.3-70b-instruct-102925-2225/predictions.csv
+  - /Users/wilsonyeh/flaredown_project/llm_output/anxiety/meta-llama-llama-3.3-70b-instruct-102925-2225/evaluation_metrics.json
+  - /Users/wilsonyeh/flaredown_project/llm_output/anxiety/meta-llama-llama-3.3-70b-instruct-102925-2225/training_summary.txt
+  - /Users/wilsonyeh/flaredown_project/llm_output/anxiety/meta-llama-llama-3.3-70b-instruct-102925-2225/figures (visualizations directory)
+
+NOTES:
+  - Retrieval used multi-variate DTW with primary symptom weighted 50% and comorbidities 50%.
+  - LLM calls were made to the configured OpenRouter model with temperature=0 and retry/backoff.
+  - Any patients that failed the full pipeline were excluded from the saved predictions; check logs for retry details.

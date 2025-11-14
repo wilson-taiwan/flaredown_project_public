@@ -1,0 +1,86 @@
+================================================================================
+RANDOM FOREST DEPRESSION FORECASTING - PER-DAY TRAINING SUMMARY
+================================================================================
+
+Generated: 2025-11-13 13:28:24
+Original Training: 2025-10-26 01:38:54
+
+Configuration:
+  • train_file: random_forest_dataset/depression/random_forest_depression_train.csv
+  • test_file: random_forest_dataset/depression/random_forest_depression_test.csv
+  • condition: depression
+  • results_root: random_forest_output/test_results
+  • models_root: random_forest_output/models
+  • n_estimators: 100
+  • max_depth: 10
+  • min_samples_split: 5
+  • min_samples_leaf: 2
+  • max_features: sqrt
+  • random_state: 42
+  • n_jobs: -1
+  • n_runs: 5
+  • imputation_strategy: mean
+  • scale_features: True
+  • limit_test_to: None
+  • save_predictions: True
+  • generate_plots: True
+
+
+================================================================================
+PER-DAY PERFORMANCE METRICS
+================================================================================
+
+This summary reports metrics using the PER-DAY approach:
+  1. Calculate MAE/RMSE/R² for each forecasting horizon (days 11-20)
+  2. Compute mean and standard deviation across all horizons
+
+This aligns with the methodology used in publication-ready tables and
+ensures fair comparison with LLM models that report per-horizon metrics.
+
+--------------------------------------------------------------------------------
+
+Mean Per-Day Performance (averaged across 10 forecasting horizons):
+  • Mean MAE:  0.6982 ± 0.0274
+  • Mean RMSE: 0.8994 ± 0.0254
+  • Mean R²:   0.4833 ± 0.0290
+
+--------------------------------------------------------------------------------
+
+Detailed Performance by Forecasting Horizon:
+
+Day    MAE          RMSE         R²          
+------------------------------------------------
+11     0.6411       0.8551       0.5472      
+12     0.6640       0.8598       0.5180      
+13     0.6932       0.9069       0.4799      
+14     0.6990       0.9033       0.4796      
+15     0.7022       0.9051       0.4777      
+16     0.7017       0.8910       0.4847      
+17     0.7228       0.9216       0.4617      
+18     0.7089       0.8976       0.4754      
+19     0.7162       0.9201       0.4542      
+20     0.7332       0.9335       0.4543      
+
+================================================================================
+
+NOTE: Comparison with Original Training Summary
+--------------------------------------------------------------------------------
+
+The original training_summary.txt reports GLOBAL metrics:
+  • Averages all predictions across all horizons into single values
+  • Weights each horizon by the number of test samples
+
+This per-day summary reports PER-HORIZON metrics:
+  • Calculates metrics for each forecasting day separately
+  • Treats each horizon equally in the final average
+
+Use THIS summary for:
+  ✓ Publication tables comparing RF with LLM models
+  ✓ Statistical tests (t-tests, Wilcoxon) on per-horizon performance
+  ✓ Analyzing how error scales with forecasting distance
+
+Use the ORIGINAL summary for:
+  ✓ Quick overall model performance summaries
+  ✓ Abstract or high-level performance descriptions
+
+================================================================================
